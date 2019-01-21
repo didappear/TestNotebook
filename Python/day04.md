@@ -101,7 +101,6 @@ foo() #报错
 #测试二
 def bar():
     print('from bar')
-
 def foo():
     print('from foo')
     bar()
@@ -110,16 +109,14 @@ foo() #正常
 #测试三
 def foo():
     print('from foo')
-    bar()
-    
+    bar()   
 def bar():
     print('from bar')
-foo() #会报错
-
+foo() #不报错
 
 #结论:函数的使用,必须遵循原则:先定义,后调用
 #先定义函数，再拼接逻辑。
-#我们在使用函数时,一定要明确地区分定义阶段和调用阶段
+#在使用函数时,一定要明确地区分定义阶段和调用阶段
 
 #定义阶段
 def foo():
