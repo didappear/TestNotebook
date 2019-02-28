@@ -48,6 +48,12 @@ C/S架构与socket的关系：
 ![img](chapter09-Socket.assets/socket1.jpg)
 ​                                                           图1
 
+```python
+HTTP协议基于TCP协议。
+TCP协议-->都说普通话
+HTTP协议-->都说七言绝句
+```
+
 
 
 # 三、socket层
@@ -229,15 +235,27 @@ udp客户端可以输入为空演示，说出recvfrom与recv的区别，暂且�
 **\*tcp服务端***
 
 ```python
-1 ss = socket() #创建服务器套接字
-2 ss.bind()      #把地址绑定到套接字
-3 ss.listen()      #监听链接
-4 inf_loop:      #服务器无限循环
-5     cs = ss.accept() #接受客户端链接
-6     comm_loop:         #通讯循环
-7         cs.recv()/cs.send() #对话(接收与发送)
-8     cs.close()    #关闭客户端套接字
-9 ss.close()        #关闭服务器套接字(可选)
+#创建服务器套接字对象。ss就是对TCP/IP的封装对象，帮助我们进行快速的TCP链接。默认TCP协议。
+ss = socket() 
+#把地址绑定到套接字对象。作为服务端，要有自己的IP和端口。
+ss.bind() 
+#监听链接。客户端的上限
+ss.listen()
+#服务器链接循环，接收客户端链接
+info_loop:      
+  	#等待客户端链接，没有则阻塞。这是一个IO操作。
+    #对应客户端的client.connect()。接收客户端的socket对象conn,客户端地址addr。
+    # conn全双工模式，可以看作一个管道，可以收发消息。把客户端的conn交给服务端，双方就可以基于这个管道收发消息。
+    conn,addr = ss.accept() 
+    #通讯循环
+    conn_loop:      
+        #对话(接收与发送)
+        recv_data=conn.recv()
+        conn.send()
+    #关闭客户端套接字
+    conn.close()
+#关闭服务器套接字(可选)
+ss.close()        
 ```
 
 
