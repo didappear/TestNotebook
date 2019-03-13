@@ -1,5 +1,6 @@
 # TestNotebook-Python 测试笔记-Python编程
-此笔记依据Python编程学习进度整理。主要包括Python编程的基本理论及对应练习。旨在灵活运用所学知识。    
+这些笔记主要是在学习Python的过程中做的记录，一直都是在本地用Markdown做记录，最近打算放上来，希望能帮助到更多学习Python的小伙伴。
+你可以点击下面的目录直接进入到相应的笔记页面。
 
 [chapter01-Python基础1-简介、语法、数据类型](https://github.com/didappear/TestNotebook-Python/blob/master/chapter01-Python%E5%9F%BA%E7%A1%801-%E7%AE%80%E4%BB%8B%E3%80%81%E8%AF%AD%E6%B3%95%E3%80%81%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.md)        
 [chapter02-Python基本数据类型](https://github.com/didappear/TestNotebook-Python/blob/master/chapter02-Python%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.md)      
