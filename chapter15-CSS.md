@@ -9,13 +9,19 @@ chapter14-CSS
 CSS 规则由两个主要的部分构成：选择器，以及一条或多条声明。
 
 ```css
-`'''``        ``selector {``                  ``property: value;``                  ``property: value;``             ``...  property: value``        ` `          ``}``        ` `'''`
+'''
+selector {
+    property: value;                  
+    property: value;            
+    ...  
+    property: value}       
+'''
 ```
 
 例如：
 
 ```css
-`h1 {color:red; font``-``size:``14px``;}`
+h1 {color:red; font``-``size:``14px``;}`
 ```
 
 ![img](chapter15-CSS.assets/877318-20170515213752072-869026256.png)　　
@@ -26,10 +32,10 @@ CSS 规则由两个主要的部分构成：选择器，以及一条或多条声�
 
 ### **1.行内式**
 
-​          行内式是在标记的style属性中设定CSS样式。这种方式没有体现出CSS的优势，不推荐使用。
+行内式是在标记的style属性中设定CSS样式。这种方式没有体现出CSS的优势，不推荐使用。
 
 ```html
-`<p style``=``"background-color: rebeccapurple"``>hello yuan<``/``p>`
+<p style="background-color: rebeccapurple">hello yuan</p>
 ```
 
 ### **2.嵌入式**
@@ -37,7 +43,15 @@ CSS 规则由两个主要的部分构成：选择器，以及一条或多条声�
 ​          嵌入式是将CSS样式集中写在网页的<head></head>标签对的<style></style>标签对中。格式如下：
 
 ```html
-`<head>``    ``<meta charset``=``"UTF-8"``>``    ``<title>Title<``/``title>``    ``<style>``        ``p{``            ``background``-``color: ``#2b99ff;``        ``}``    ``<``/``style>``<``/``head>`
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>      
+        p{
+            background-color: #2b99ff;
+        }
+        </style>
+</head>
 ```
 
 ### **3 链接式**
@@ -71,7 +85,17 @@ CSS 规则由两个主要的部分构成：选择器，以及一条或多条声�
 ## 组合选择器
 
 ```css
-`E,F   多元素选择器，同时匹配所有E元素或F元素，E和F之间用逗号分隔      :div,p { color:``#f00; }` `E F   后代元素选择器，匹配所有属于E元素后代的F元素，E和F之间用空格分隔 :li a { font``-``weight:bold;｝` `E > F   子元素选择器，匹配所有E元素的子元素F            :div > p { color:``#f00; }`` ` `E ``+` `F   毗邻元素选择器，匹配所有紧随E元素之后的同级元素F  :div ``+` `p { color:``#f00; } ` `E ~ F   普通兄弟选择器（以破折号分隔）                 :.div1 ~ p{font``-``size: ``30px``; }`
+E,F   或。多元素选择器，同时匹配所有E元素或F元素，E和F之间用逗号分隔
+	div,p { color:#f00; }
+E F   后代元素选择器，匹配所有属于E元素后代的F元素，E和F之间用空格分隔
+	li a { font-weight:bold;｝    
+E > F   子元素选择器，匹配所有E元素的子元素F
+    div > p { color:#f00; }
+E + F   毗邻元素选择器，匹配所有紧随E元素之后的同级元素F
+        div+p { color:#f00; } 
+E ~ F   普通兄弟选择器（以破折号分隔）
+    .div1 ~ p{font-size: 30px; }
+E标签选择器/E[属性选择器] 且。同时满足两个条件。
 ```
 
 注意，关于标签嵌套：
@@ -80,15 +104,30 @@ CSS 规则由两个主要的部分构成：选择器，以及一条或多条声�
 
 ## 属性选择器
 
+标签可以按照需求自定义属性
+
 ```css
-`E[att]          匹配所有具有att属性的E元素，不考虑它的值。（注意：E在此处可以省略。``                ``比如“[cheacked]”。以下同。）   p[title] { color:``#f00; }`  `E[att``=``val]      匹配所有att属性等于“val”的E元素   div[``class``=``”error”] { color:``#f00; }`  `E[att~``=``val]     匹配所有att属性具有多个空格分隔的值、其中一个值等于“val”的E元素``                ``td[``class``~``=``”name”] { color:``#f00; }` `E[attr^``=``val]    匹配属性值以指定值开头的每个元素                    ``                ``div[``class``^``=``"test"``]{background:``#ffff00;}` `E[attr$``=``val]    匹配属性值以指定值结尾的每个元素    div[``class``$``=``"test"``]{background:``#ffff00;}` `E[attr``*``=``val]    匹配属性值中包含指定值的每个元素    div[``class``*``=``"test"``]{background:``#ffff00;}`
+E[att] 匹配所有具有att属性的E元素，不考虑它的值。（注意：E为Element标签选择器，在此处可以省略。比如“[cheacked]”。以下同。）   
+	p[title] { color:#f00; }
+E[att=val] 匹配所有att属性等于“val”的E元素   
+	div[class=”error”] { color:#f00; }
+E[att~=val] 匹配所有att属性具有多个空格分隔的值、其中一个值等于“val”的E元素
+	td[class~=”name”] { color:#f00; }
+E[attr^=val]    匹配属性值以指定值开头的每个元素
+	div[class^="test"]{background:#ffff00;}
+E[attr$=val]    匹配属性值以指定值结尾的每个元素    
+	div[class$="test"]{background:``#ffff00;}
+E[attr*=val]    匹配属性值中包含指定值的每个元素    
+	div[class*="test"]{background:#ffff00;}
 ```
+
+
+
+
 
 ## 伪类
 
 ### **anchor伪类：**专用于控制链接的显示效果
-
-[![复制代码](chapter15-CSS.assets/copycode.gif)](javascript:void(0);)
 
 ```css
 '''
